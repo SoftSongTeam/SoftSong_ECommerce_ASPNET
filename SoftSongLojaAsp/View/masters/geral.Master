@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="geral.master.cs" Inherits="Tcm2._0.geral" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+	<title></title>
+	<link href="../Offline%20Frameworks/FontAwesome/css/all.min.css" rel="stylesheet" />
+	<link href="../Offline%20Frameworks/bootstrap/bootstrap.css" rel="stylesheet" />
+	<link href="../Offline%20Frameworks/flexslider.css" rel="stylesheet" />
+	<link href="../css/geral.css" rel="stylesheet" />
+	<asp:ContentPlaceHolder ID="cphHead" runat="server">
+	</asp:ContentPlaceHolder>
+</head>
+
+<body data-dark-mode="bg-darker">
+	<div id="app" data-vanish-wait>
+		<form id="form1" runat="server">
+			<nav class="navbar navbar-expand-sm sticky-top border-bottom bg-theme-gradient text-light" data-dark-mode="border-light bg-darker" data-dark-mode-reverse="bg-theme-gradient">
+				<div class="container">
+					<a class="navbar-brand text-light" href="index.aspx">SoftSong</a>
+					<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse text-light" id="navbarNav">
+
+						<ul class="navbar-nav ml-auto">
+							<div class="d-flex flex-row row-hl mr-3">
+
+								<button class="btn item-hl dark-mode-toggler align-self-center mx-3 p-0" data-vanish-wait onclick="event.preventDefault();toggleDarkMode()" data-dark-mode="dark-mode-toggler--dark" data-toggle="tooltip" data-placement="bottom" title="Modo Noturno" data-delay="200">
+									<div class="dark-mode-toggler-switch">
+										<i class="far fa-moon text-dark" data-dark-mode="fa-sun" data-dark-mode-reverse="fa-moon"></i>
+									</div>
+								</button>
+
+								<button onclick="event.preventDefault();window.location.href = 'index.aspx'"  class="item-hl align-items-center d-inline-flex p-3 bg-transparent vanish-box vanish-fast text-light" data-vanish-toggle="bg-theme-gradient-left border border-top-0 border-bottom-0 cursor-pointer" data-vanish-toggle-op="border-0">
+
+									<p class="d-inline m-0 vanish mr-3">
+										Página Inicial
+									</p>
+									<i class="fas fa-home nav-i text-light"></i>
+
+								</button>
+								<button onclick="event.preventDefault();$('#btnCartHidden').click()" class="item-hl align-items-center d-inline-flex p-3 bg-transparent vanish-box vanish-fast text-light" data-vanish-toggle="bg-theme-gradient-left border border-top-0 border-bottom-0 cursor-pointer" data-vanish-toggle-op="border-0">
+
+									<p class="d-inline m-0 vanish mr-3">
+										Carrinho
+									</p>
+									<i class="fas fa-shopping-cart nav-i text-light"></i>
+
+								</button>
+								<asp:Button ID="btnCartHidden" runat="server" OnClick="btnCartHidden_Click" Text="Sai daqui fodido" CssClass="d-none"/>
+
+
+								<asp:ContentPlaceHolder ID="cphLogged" runat="server"></asp:ContentPlaceHolder>
+							</div>
+
+
+							<div class="input-group my-2 w-auto vanish-box" id='searchVanishBox'>
+								<input class="form-control vanish" data-dark-mode="bg-transparent border border-light text-light" id="searchVanishInput" type="text" placeholder="Pesquise aqui" onkeypress="if (event.key == 'Enter')  {event.preventDefault(); window.location.href = 'search.aspx?s=' + $(this).val();}">
+								<div class="input-group-append">
+									<button class="btn btn-outline-light bg-transparent text-light" type="button" data-vanish-toggle-op="rounded" data-vanish-toggle="" onclick="event.preventDefault(); if ($('#searchVanishInput').val() != '') window.location.href = 'search.aspx?s=' + $('#searchVanishInput').val(); ">
+										<i class="fas fa-search"></i>
+									</button>
+								</div>
+							</div>
+
+
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div>
+				<asp:ContentPlaceHolder ID="cphBody" runat="server">
+				</asp:ContentPlaceHolder>
+
+				<asp:ScriptManager ID="ScriptManager1" runat="server">
+					<Services>
+						<asp:ServiceReference Path="../svc/utilities.svc" />
+					</Services>
+				</asp:ScriptManager>
+			</div>
+		</form>
+	</div>
+	<script src="../Offline%20Frameworks/jquery-3.3.1.min.js"></script>
+	<script src="../Offline%20Frameworks/vue.min.js"></script>
+	<script src="../Offline%20Frameworks/jquery.flexslider-min.js"></script>
+	<script src="../Offline%20Frameworks/popper.min.js"></script>
+	<script src="../Offline Frameworks/bootstrap/bootstrap.min.js"></script>
+	<script src="../js/jquery.mask.js"></script>
+	<script src="../js/vanish.js"></script>
+	<script src="../Offline%20Frameworks/base64Binary.js"></script>
+	<script src="../js/geral.js"></script>
+
+	<asp:ContentPlaceHolder ID="cphBottomBody" runat="server"></asp:ContentPlaceHolder>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+﻿<%@ Master Language="C#" MasterPageFile="geral.Master" AutoEventWireup="true" CodeBehind="Unlogged.master.cs" Inherits="Tcm2._0.NestedMasterPage1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
+	<asp:ContentPlaceHolder ID="cphHead" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphLogged" runat="server">
+	<button onclick="event.preventDefault();" class="item-hl align-items-center d-inline-flex p-3 bg-transparent vanish-box vanish-fast text-light" data-vanish-toggle="bg-theme-gradient-left border border-top-0 border-bottom-0 cursor-pointer" data-vanish-toggle-op="border-0" data-toggle="modal" data-target="#loginModal">
+
+		<p class="d-inline m-0 vanish mr-3">
+			Login
+		</p>
+		<i class="fas fa-sign-in-alt  nav-i text-light"></i>
+
+	</button>
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphBody" runat="server">
+	<asp:ContentPlaceHolder ID="cphBody" runat="server"></asp:ContentPlaceHolder>
+
+
+	<div class="modal fade" id="loginModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" data-dark-mode="bg-darker border-light text-light">
+				<div class="modal-header d-flex flex-column align-items-stretch pb-0 px-4">
+					<div class="d-flex justify-content-between">
+						<h5 class="modal-title">Login</h5>
+						<button class="close" data-dismiss="modal" data-dark-mode="text-light">&times;</button>
+					</div>
+					<p class="lead my-3 pb-0">
+						Preencha os campos com as suas informações e entre na sua conta.
+					</p>
+				</div>
+				<div class="modal-body px-4">
+					<asp:Panel ID="pnlLogin" runat="server" DefaultButton="btnLogin">
+						<div>
+							<asp:TextBox ID="txtLogEmail" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="E-mail" class="form-control p-3 my-3"></asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtLogPass" runat="server" TextMode="Password" data-dark-mode="bg-transparent border border-light text-light" placeholder="Senha" class="form-control p-3 my-3"></asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+					</asp:Panel>
+
+				</div>
+				<div class="modal-footer d-flex flex-column px-4">
+					<button class="btn btn-link btn-block" data-dark-mode="text-light" onclick="event.preventDefault();$(this).closest('.modal').modal('hide');setTimeout(() => {$('#signupModal').modal('show');}, 300)">Não possui um usuário? Crie um agora!</button>
+					<asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Cadastrar" CssClass="btn btn-primary btn-block p-3" OnClientClick="loadingModal(event, this)" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="signupModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" data-dark-mode="bg-darker border-light text-light">
+				<div class="modal-header d-flex flex-column align-items-stretch pb-0 px-4">
+					<div class="d-flex justify-content-between">
+						<h5 class="modal-title">Cadastro</h5>
+						<button class="close" data-dark-mode="text-light" data-dismiss="modal">&times;</button>
+					</div>
+					<p class="lead my-3 pb-0">
+						Preencha os campos com as suas informações e crie a sua conta.
+					</p>
+				</div>
+				<div class="modal-body px-4 py-0">
+					<asp:Panel ID="pnlSignIn" runat="server" DefaultButton="btnSignIn">
+						<div>
+							<asp:TextBox ID="txtCadName" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="Nome" class="form-control p-3 my-3"></asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadCpf" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="CPF" class="form-control p-3 my-3" data-mask="000.000.000-00"></asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadTel" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="Telefone" class="form-control p-3 my-3" data-mask="spCelphone"></asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadCep" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="CEP" class="form-control p-3 my-3" data-mask="00000-000"></asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<p class="lead mx-3 d-none" id="cepReturnBox" data-toggle="tooltip" data-tooltip="salve" data-placement="bottom" title="Esse endereço foi buscado automaticamente baseado no seu CEP. Em caso de erro, revise o CEP inserido.">
+								<span class="cepReturnText">Av. do Cursino, São Paulo, SP.</span>
+								<span class="text-danger font-weight-bold">Este endereço está incorreto?</span>
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadNum" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="Número" class="form-control p-3 my-3">
+							</asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadCom" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="Complemento" class="form-control p-3 my-3">
+							</asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadEmail" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="E-mail" class="form-control p-3 my-3">
+							</asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadPass" TextMode="Password" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="Senha" class="form-control p-3 my-3">
+							</asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+						<div>
+							<asp:TextBox ID="txtCadRepPass" TextMode="Password" runat="server" data-dark-mode="bg-transparent border border-light text-light" placeholder="Confirme a senha" class="form-control p-3 my-3">
+							</asp:TextBox>
+							<p class="invalid-feedback">
+							</p>
+						</div>
+					</asp:Panel>
+				</div>
+				<div class="modal-footer d-flex flex-column px-4">
+					<button class="btn btn-link btn-block" data-dark-mode="text-light" onclick="event.preventDefault();$(this).closest('.modal').modal('hide');setTimeout(() => {$('#loginModal').modal('show');}, 300)">Já possui um usuário? Entre agora!</button>
+
+					<asp:Button ID="btnSignIn" runat="server" OnClick="btnSignIn_Click" Text="Cadastrar" CssClass="btn btn-primary btn-block p-3" OnClientClick="loadingModal(event, this)" />
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="modal fade" id="loadingModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content" data-dark-mode="bg-darker border-light text-light">
+				<div class="modal-loading-box">
+					<div class="modal-loading-item"></div>
+					<div class="modal-loading-item"></div>
+					<div class="modal-loading-item"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</asp:Content>
+<asp:Content ID="contBottomBody" ContentPlaceHolderID="cphBottomBody" runat="server">
+	<script src="../Offline%20Frameworks/jquery.mask.js"></script>
+	<script src="../js/unlogged.js"></script>
+	<asp:ContentPlaceHolder ID="cphBottomBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

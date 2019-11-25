@@ -1,0 +1,109 @@
+﻿body {
+	min-height: 100vh;
+}
+
+.modal {
+	overflow-y: auto;
+}
+
+.text-yiq-back {
+	color: #212529 !important
+}
+
+.text-back {
+	color: #fff !important
+}
+
+.text-yiq-primary {
+	color: #212529 !important
+}
+
+.modal-loading-box {
+	height: 12rem;
+	overflow: hidden;
+	position: relative
+}
+
+	.modal-loading-box .modal-loading-item {
+		position: absolute;
+		left: calc(50% - 5rem);
+		top: calc(50% + 3rem);
+		height: 3rem;
+		width: 3rem;
+		border-radius: 50%;
+		border: 2px solid #7535ad;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		-webkit-animation-name: modalLoadingItem;
+		animation-name: modalLoadingItem;
+		-webkit-animation-duration: 1.8s;
+		animation-duration: 1.8s;
+		-webkit-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+		-webkit-animation-direction: forwards;
+		animation-direction: forwards;
+		-webkit-animation-timing-function: ease-in-out;
+		animation-timing-function: ease-in-out
+	}
+
+@-webkit-keyframes modalLoadingItem {
+	0% {
+		left: calc(50% - 5rem);
+		top: calc(50% + 3rem)
+	}
+
+	25% {
+		top: calc(50%)
+	}
+
+	50% {
+		left: calc(50% + 5rem);
+		top: calc(50% + 3rem)
+	}
+
+	75% {
+		top: calc(50% - 4rem)
+	}
+
+	100% {
+		left: calc(50% - 5rem);
+		top: calc(50% + 3rem)
+	}
+}
+
+@keyframes modalLoadingItem {
+	0% {
+		left: calc(50% - 5rem);
+		top: calc(50% + 3rem)
+	}
+
+	25% {
+		top: calc(50%)
+	}
+
+	50% {
+		left: calc(50% + 5rem);
+		top: calc(50% + 3rem)
+	}
+
+	75% {
+		top: calc(50% - 4rem)
+	}
+
+	100% {
+		left: calc(50% - 5rem);
+		top: calc(50% + 3rem)
+	}
+}
+
+.modal-loading-box .modal-loading-item:nth-of-type(2) {
+	-webkit-animation-delay: -.6s;
+	animation-delay: -.6s
+}
+
+.modal-loading-box .modal-loading-item:nth-of-type(3) {
+	-webkit-animation-delay: -1.2s;
+	animation-delay: -1.2s
+}
+
+/*# sourceMappingURL=geralLoja.css.map */

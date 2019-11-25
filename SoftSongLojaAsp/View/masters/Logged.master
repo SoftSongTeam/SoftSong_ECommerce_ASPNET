@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" MasterPageFile="geral.Master" AutoEventWireup="true" CodeBehind="Logged.master.cs" Inherits="Tcm2._0.Logged" %>
+
+<asp:Content ID="contHead" ContentPlaceHolderID="cphHead" runat="server">
+    <asp:ContentPlaceHolder ID="cphHead" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="contLogged" ContentPlaceHolderID="cphLogged" runat="server">
+    <%--<div id="vmLogged">
+        <button class="btn btn-outline-success ml-3" data-toggle="popover" @click="event.preventDefault();" id="loggedPopover">
+            <i class="fas fa-user"></i>
+        </button>
+        <div id="popoverLoggedContent" class="d-none">
+            <asp:Label ID="lblUser" runat="server" Text="" CssClass="text-center lead"></asp:Label>
+        </div>
+    </div>--%>
+
+    <button class="item-hl align-items-center d-inline-flex p-3 bg-transparent vanish-box vanish-fast text-light" 
+		data-vanish-toggle="bg-theme-gradient-left border border-top-0 border-bottom-0 cursor-pointer" 
+		data-vanish-toggle-op="border-0" onclick="event.preventDefault(); window.location.href = 'perfil.aspx'">
+
+        <p class="d-inline m-0 vanish mr-3">
+            Seu Perfil
+        </p>
+        <i class="fas fa-user-alt nav-i text-light"></i>
+
+    </button>
+
+	<asp:Button ID="btnFecharSessao" runat="server" Text="sai daq bobo" CssClass="d-none" OnClick="btnFecharSessao_Click" />
+    <button class="item-hl align-items-center d-inline-flex p-3 bg-transparent vanish-box vanish-fast text-light" 
+		data-vanish-toggle="bg-danger border border-top-0 border-bottom-0 cursor-pointer" 
+		data-vanish-toggle-op="border-0" onclick="event.preventDefault();$('#cphLogged_btnFecharSessao').click();">
+
+        <p class="d-inline m-0 vanish mr-3">
+            Sair
+        </p>
+        <i class="fas fa-sign-out-alt nav-i text-light"></i>
+
+    </button>
+</asp:Content>
+<asp:Content ID="contBody" ContentPlaceHolderID="cphBody" runat="server">
+    <asp:ContentPlaceHolder ID="cphBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="contBottomBody" ContentPlaceHolderID="cphBottomBody" runat="server">
+    <script src="../js/logged.js"></script>
+    <asp:ContentPlaceHolder ID="cphBottomBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
